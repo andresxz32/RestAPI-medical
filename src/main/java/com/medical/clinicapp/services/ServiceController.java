@@ -31,7 +31,7 @@ public class ServiceController {
     }
 
     @GetMapping("/{requestedId}")
-    public ResponseEntity<Service> findById(@PathVariable UUID requestedId, Principal principal) {
+    public ResponseEntity<Service> findById(@PathVariable UUID requestedId) {
         Optional<Service> service = serviceRepository.findById(requestedId);
         return service.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
